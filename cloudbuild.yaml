@@ -17,6 +17,6 @@ steps:
    - '--region'
    - 'asia-east1'
  options:
-   - logging: NONE
+   logging: NONE
  images:
  - 'gcr.io/$PROJECT_ID/calend-384509:$COMMIT_SHA'
