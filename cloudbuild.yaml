@@ -1,3 +1,7 @@
+options:
+  machineType: N1_HIGHCPU_8
+  serviceAccountEmail: firebase-adminsdk-go8fo@calend-384509.iam.gserviceaccount.com
+
 steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
@@ -9,4 +13,3 @@ steps:
       - --quiet
     env:
       - 'CLOUD_BUILD_LOGGING_MODE=NONE'
-    serviceAccount: firebase-adminsdk-go8fo@calend-384509.iam.gserviceaccount.com
