@@ -1,15 +1,20 @@
-options:
-  machineType: N1_HIGHCPU_8
-  serviceAccountEmail: firebase-adminsdk-go8fo@calend-384509.iam.gserviceaccount.com
-
-steps:
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['install']
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['run', 'build']
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args:
-      - app deploy
-      - --quiet
-    env:
-      - 'CLOUD_BUILD_LOGGING_MODE=NONE'
+ steps:
+ # Build the container image
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['build', '-t', 'gcr.io/$PROJECT_ID/calend-384509:$COMMIT_SHA', '.']
+ # Push the container image to Container Registry
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['push', 'gcr.io/$PROJECT_ID/calend-384509:$COMMIT_SHA']
+ # Deploy container image to Cloud Run
+ - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+   entrypoint: gcloud
+   args:
+   - 'run'
+   - 'deploy'
+   - 'calend-384509'
+   - '--image'
+   - 'gcr.io/$PROJECT_ID/calend-384509:$COMMIT_SHA'
+   - '--region'
+   - 'asia-east1'
+ images:
+ - 'gcr.io/$PROJECT_ID/calend-384509:$COMMIT_SHA'
