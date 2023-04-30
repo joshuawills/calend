@@ -1,5 +1,12 @@
-<img src="https://i.ibb.co/T8phhqM/lightmode.png"
-        height="30">
+<p align = "center">
+  <img src="https://i.ibb.co/T8phhqM/lightmode.png"
+  height="100">
+</p>
 
-# Calend - A Product Management Tool
+<p align="center">
+This is a simple product management tool that I have developed.
+</p>
+
+## Calend
+
 
