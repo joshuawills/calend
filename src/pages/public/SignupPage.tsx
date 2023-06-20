@@ -13,13 +13,15 @@ function SignUpPage() {
 	const passwordRef = useRef<HTMLInputElement>(null);
 	const passwordTwoRef = useRef<HTMLInputElement>(null);
 	const emailRef = useRef<HTMLInputElement>(null);
+  
 
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
-  const { signup } = useAuth();
+  const { signup, currentUser } = useAuth();
 
   const navigate = useNavigate();
+
 
   async function handleSubmit(e: any) {
     e.preventDefault();
@@ -40,7 +42,6 @@ function SignUpPage() {
       if (err.toString().includes("email address is badly formatted")) setError("Invalid email");
       else setError(err.toString());
     }
-    
     setLoading(false);
   }
 
@@ -89,10 +90,10 @@ function SignUpPage() {
 							inputRef={passwordTwoRef}
               required
               fullWidth
-              name="password"
+              name="passwordTwo"
               label="Confirm Password"
               type="password"
-              id="password"
+              id="passwordTwo"
             />
             {(!loading) ? <Button
               type="submit"

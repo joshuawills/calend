@@ -14,6 +14,7 @@ function PublicNavbar() {
   }, [isDarkMode]);
 
   return (
+    <>
     <div className="navigationHeader">
       <Link to = "/" className="text-link">
         <div className="navigationLogo"> 
@@ -25,8 +26,10 @@ function PublicNavbar() {
             <li><Link to = "/login" className="text-link">log in</Link></li>
             <li><Link to = "/signup" className="text-link">sign up</Link></li>
           </ul>
-        </div>
+      </div>
     </div>
+    <div className="neon-line"></div>
+    </>
   )
 }
 
