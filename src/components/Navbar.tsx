@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import dayjs from 'dayjs'
 import { useAuth } from '../contexts/AuthContext';
 import { useSelector } from 'react-redux/es/exports';
 import axios from 'axios'
@@ -31,7 +30,7 @@ function Navbar() {
   async function fetchEpicData() {
 		const result = await axios({
 			method: 'get',
-			url: 'http://localhost:3000/calend/getUserEpics',
+			url: 'http://localhost:3001/calend/getUserEpics',
 			params: {
 				userID: currentUser['uid']
 			}
@@ -68,7 +67,7 @@ function Navbar() {
 
       const result = await axios({
         method: 'post',
-        url: 'http://localhost:3000/calend/generateIncident',
+        url: 'http://localhost:3001/calend/generateIncident',
         data: {
           'title': title,
           'description': (description) ? description : 'NONE',
@@ -142,7 +141,7 @@ function Navbar() {
               <div className = "instructionalIssueBar">
                 <div className="circle">4</div> <div className = "infoRaw">Due Date</div>
               </div>
-              <LocalizationProvider dateAdapter={AdapterDayjs} locale={'en-GB'}>
+              <LocalizationProvider dateAdapter={AdapterDayjs} >
                 <div style = {{display: 'flex', margin:'0.5rem'}}>
                   <DatePicker  disablePast  /* value={dayjs(dueDate)} */ onChange={(newValue: any) => setDueDate(newValue)}/>
                 </div>

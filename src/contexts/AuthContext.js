@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../firebase'
+import { auth } from "../firebase"; 
 import axios from 'axios';
-import { current } from '@reduxjs/toolkit';
 
 const AuthContext = React.createContext()
 
@@ -19,7 +18,7 @@ export function AuthProvider({ children }) {
 
     await axios({
       method: 'post',
-      url: 'http://localhost:3000/calend/initialiseUser',
+      url: 'http://localhost:3001/calend/initialiseUser',
       data: {
         userID: result['user']['uid'],
         email: result['user']['email']

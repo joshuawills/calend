@@ -39,7 +39,7 @@ function Profile() {
 	async function fetchEpicData() {
 		const result = await axios({
 			method: 'get',
-			url: 'http://localhost:3000/calend/getUserEpics',
+			url: 'http://localhost:3001/calend/getUserEpics',
 			params: {
 				userID: currentUser['uid']
 			}
@@ -72,7 +72,7 @@ function Profile() {
 
 		const result = await axios({
 			method: 'put',
-			url: 'http://localhost:3000/calend/editEpic',
+			url: 'http://localhost:3001/calend/editEpic',
 			data: {
 				'oldEpicName': epicName,
 				'color': color,
@@ -90,7 +90,7 @@ function Profile() {
 		const uID: string = currentUser['uid'];
 		await axios({
 			method: 'delete',
-			url: 'http://localhost:3000/calend/deleteEpic',
+			url: 'http://localhost:3001/calend/deleteEpic',
 			params: {
 				'name': epicName,
 				'color': color,
@@ -106,7 +106,7 @@ function Profile() {
 		if (!title) return
 		await axios({
 			method: 'post',
-			url: 'http://localhost:3000/calend/generateEpic',
+			url: 'http://localhost:3001/calend/generateEpic',
 			data: {
 				'uID': currentUser['uid'],
 			  'title': title
@@ -205,7 +205,7 @@ function Profile() {
 
 			await axios({
 				method: 'post',
-				url: 'http://localhost:3000/calend/generateInitialEpic',
+				url: 'http://localhost:3001/calend/generateInitialEpic',
 				data: {
 					userID: currentUser['uid'],
 					title: titleRef.current.value
